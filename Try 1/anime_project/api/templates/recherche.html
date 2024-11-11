@@ -1,0 +1,32 @@
+<!-- templates/recherche.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Recherche de Personnage</title>
+</head>
+<body>
+    <h1>Recherche de Personnage</h1>
+    <form id="searchForm">
+        <label for="cheveux">Couleur de cheveux :</label>
+        <input type="text" id="cheveux" name="couleur_cheveux">
+        <button type="button" onclick="recherche()">Rechercher</button>
+    </form>
+    <div id="resultat"></div>
+
+    <script>
+        function recherche() {
+            const couleur = document.getElementById("cheveux").value;
+            fetch(`/api/liaison_perso/?cheveux__couleur=${couleur}`)
+                .then(response => response.json())
+                .then(data => {
+                    let html = "<h2>Résultats :</h2>";
+                    data.forEach(item => {
+                        html += `<p>Personnage ID : ${item.perso}</p>`;
+                    });
+                    document.getElementById("resultat").innerHTML = html;
+                });
+        }
+    </script>
+</body>
+</html>

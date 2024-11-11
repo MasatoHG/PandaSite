@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Personnages</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .button-container a {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Liste des Personnages</h1>
+    
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Surnom</th>
+                <th>Anniversaire</th>
+                <th>Taille (cm)</th>
+                <th>Poids (kg)</th>
+                <th>Résus</th>
+                <th>Couleur Cheveux</th>
+                <th>Couleur Yeux</th>
+                <th>Type</th>
+                <th>Importance</th>
+                <th>Acteur</th>
+                <th>Manga</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for perso in personnages %}
+                <tr>
+                    <td>{{ perso.prenom }}</td>
+                    <td>{{ perso.nom }}</td>
+                    <td>{{ perso.surnom }}</td>
+                    <td>{{ perso.anniversaire }}</td>
+                    <td>{{ perso.taille.cm }}</td>
+                    <td>{{ perso.poids.kg }}</td>
+                    <td>{{ perso.resus.resus }}</td>
+                    <td>{{ perso.couleur_cheveux.couleur }}</td>
+                    <td>{{ perso.couleur_yeux.couleur }}</td>
+                    <td>{{ perso.type.type }}</td>
+                    <td>{{ perso.importance.importance }}</td>
+                    <td>{{ perso.acteur.acteur }}</td>
+                    <td>{{ perso.manga.manga }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
